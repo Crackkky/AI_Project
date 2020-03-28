@@ -1,83 +1,9 @@
 Mémoire totale : 4.0 GiB
 Instanciation du bot "Random"
-7 classes ont été trouvées
+4 classes ont été trouvées
 
-Bot 1/7
-Classe : awele.bot.random.RandomBot
-Instanciation du bot "Random"
-Nom du bot : Random
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.000
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 0 B
-Usage mémoire maximum : 327.7 KiB
-
-Bot 2/7
-Classe : awele.bot.Daisy.Daisy
-Instanciation du bot "Daisy"
-Nom du bot : Daisy
-Auteur(s) : Arnaud GARRIGUE et Julian ROUSSEL
-Temps d'apprentissage : 00:00:00.000
-Durée d'une prise de décision : 00:00:00.024
-Usage mémoire : 370.0 KiB
-Usage mémoire maximum : 46.4 MiB
-
-Bot 3/7
-Classe : awele.bot.first.FirstBot
-Instanciation du bot "First"
-Nom du bot : First
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.000
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 592 B
-Usage mémoire maximum : 367.6 KiB
-
-Bot 4/7
-Classe : awele.bot.minmax.MinMaxBot
-Instanciation du bot "MinMax"
-Nom du bot : MinMax
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.000
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 1.2 KiB
-Usage mémoire maximum : 1.2 MiB
-
-Bot 5/7
-Classe : awele.bot.Daisy.MinMaxBotDaisy
-Instanciation du bot "MinMax"
-Nom du bot : MinMax
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.000
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 544 B
-Usage mémoire maximum : 1.3 MiB
-
-Bot 6/7
-Classe : awele.bot.knn2.Knn2Bot
-Instanciation du bot "k-NN2"
-Nom du bot : k-NN2
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.021
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 26.4 KiB
-Usage mémoire maximum : 1.4 MiB
-
-Bot 7/7
-Classe : awele.bot.knn1.Knn1Bot
-Instanciation du bot "k-NN1"
-Nom du bot : k-NN1
-Auteur(s) : Alexandre Blansché
-Temps d'apprentissage : 00:00:00.002
-Durée d'une prise de décision : 00:00:00.000
-Usage mémoire : 12.4 KiB
-Usage mémoire maximum : 921.8 KiB
-
-7 bots ont été instanciés
-Durée du chargement : 00:00:01.345
-Mémoire utilisée : 4.2 MiB
-
-Que le championnat commence !
-
-------------------------------------
-Affrontement 1/21
-Random vs. Daisy
+Bot 1/4
+Classe : awele.bot.DaisyBot.MinMaxBot
+Instanciation du bot "Daisy aux grandes oreilles"
+Nom du bot : Daisy aux grandes oreilles
+Auteur(s) : GARRIGUE Arnaud - ROUSSEL Julian

@@ -1,4 +1,4 @@
-package awele.bot.Daisy;
+package awele.bot.Daisy2;
 
 import awele.core.Board;
 

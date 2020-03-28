@@ -1,4 +1,4 @@
-//package awele.bot.Daisy;
+//package awele.bot.Daisy2;
 //
 //import awele.bot.CompetitorBot;
 //import awele.bot.Daisy.MinMax.MaxNodeDaisy;
@@ -6,14 +6,12 @@
 //import awele.core.Board;
 //import awele.core.InvalidBotException;
 //
-//public class Daisy extends CompetitorBot {
+//public class Daisy2 extends CompetitorBot {
 //
-//    private Board board;
-//
-//    public Daisy() throws InvalidBotException {
+//    public Daisy2() throws InvalidBotException {
 //        addAuthor("Arnaud GARRIGUE");
 //        addAuthor("Julian ROUSSEL");
-//        setBotName("Daisy");
+//        setBotName("Daisy2");
 //    }
 //
 //    @Override
@@ -28,8 +26,8 @@
 //
 //    @Override
 //    public double[] getDecision(Board board) {
-//        MinMaxNodeDaisy.initialize(board, 6, 3);
-//        return new MaxNodeDaisy(board).getDecision ();
+//        MinMaxNodeDaisy.initialize (board, 4);
+//        return new MaxNodeDaisy(board).getDecision();
 //    }
 //
 //    @Override

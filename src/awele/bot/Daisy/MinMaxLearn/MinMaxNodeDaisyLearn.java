@@ -1,5 +1,6 @@
-package awele.bot.Daisy;
+package awele.bot.Daisy.MinMaxLearn;
 
+import awele.bot.Daisy.ChoiceTree.ChoiceNode;
 import awele.core.Board;
 import awele.core.InvalidBotException;
 
@@ -7,7 +8,7 @@ import awele.core.InvalidBotException;
  * @author Alexandre Blansché
  * Noeud d'un arbre MinMax
  */
-public abstract class MinMaxNodeDaisy {
+public abstract class MinMaxNodeDaisyLearn {
     /**
      * Numéro de joueur de l'IA
      */
@@ -36,7 +37,7 @@ public abstract class MinMaxNodeDaisy {
      * @param alpha Le seuil pour la coupe alpha
      * @param beta  Le seuil pour la coupe beta
      */
-    public MinMaxNodeDaisy(Board board, int depth, double alpha, double beta) {
+    public MinMaxNodeDaisyLearn(Board board, int depth, double alpha, double beta) {
         /* On crée un tableau des évaluations des coups à jouer pour chaque situation possible */
         this.decision = new double[Board.NB_HOLES];
         /* Initialisation de l'évaluation courante */
@@ -62,9 +63,9 @@ public abstract class MinMaxNodeDaisy {
                         /* Sinon, on explore les coups suivants */
                     else {
                         /* Si la profondeur maximale n'est pas atteinte */
-                        if (depth < MinMaxNodeDaisy.maxDepth) {
+                        if (depth < MinMaxNodeDaisyLearn.maxDepth) {
                             /* On construit le noeud suivant */
-                            MinMaxNodeDaisy child = this.getNextNode(copy, depth + 1, alpha, beta);
+                            MinMaxNodeDaisyLearn child = this.getNextNode(copy, depth + 1, alpha, beta);
                             /* On récupère l'évaluation du noeud fils */
                             this.decision[i] = child.getEvaluation();
                         }
@@ -94,12 +95,12 @@ public abstract class MinMaxNodeDaisy {
      * Initialisation
      */
     public static void initialize(Board board, int maxDepth) {
-        MinMaxNodeDaisy.maxDepth = maxDepth;
-        MinMaxNodeDaisy.player = board.getCurrentPlayer();
+        MinMaxNodeDaisyLearn.maxDepth = maxDepth;
+        MinMaxNodeDaisyLearn.player = board.getCurrentPlayer();
     }
 
     private int diffScore(Board board) {
-        return board.getScore(MinMaxNodeDaisy.player) - board.getScore(Board.otherPlayer(MinMaxNodeDaisy.player));
+        return board.getScore(MinMaxNodeDaisyLearn.player) - board.getScore(Board.otherPlayer(MinMaxNodeDaisyLearn.player));
     }
 
     /**
@@ -148,7 +149,7 @@ public abstract class MinMaxNodeDaisy {
      * @param beta  Le seuil pour la coupe beta
      * @return Un noeud (MinNode ou MaxNode) du niveau suivant
      */
-    protected abstract MinMaxNodeDaisy getNextNode(Board board, int depth, double alpha, double beta);
+    protected abstract MinMaxNodeDaisyLearn getNextNode(Board board, int depth, double alpha, double beta);
 
     /**
      * L'évaluation du noeud

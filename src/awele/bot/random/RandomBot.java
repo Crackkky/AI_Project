@@ -13,7 +13,7 @@ import awele.core.InvalidBotException;
 public class RandomBot extends DemoBot
 {
     private Random random;
-    
+
     /**
      * @throws InvalidBotException
      */
@@ -42,7 +42,7 @@ public class RandomBot extends DemoBot
             decision [i] = this.random.nextDouble ();
         return decision;
     }
-    
+
     /**
      * Initialisation de la génération pseudo-aléatoire de nombre
      */

@@ -1,49 +1,48 @@
-package awele.bot.Daisy;
+package awele.bot.DaisyBot;
 
 import awele.core.Board;
 
 /**
  * @author Alexandre Blansché
- * Noeud Min : estimation du meilleur coup possible pour l'adversaire
+ * Noeud Max : estimation du meilleur coup possible pour l'IA
  */
-public class MinNodeDaisy extends MinMaxNodeDaisy
+public class MaxNode extends MinMaxNode
 {
     /**
      * Constructeur pour un noeud initial
      * @param board La situation de jeu pour laquelle il faut prendre une décision
      */
-    MinNodeDaisy(Board board)
+    MaxNode (Board board)
     {
         this (board, 0, -Double.MAX_VALUE, Double.MAX_VALUE);
     }
 
     /**
      * Constructeur d'un noeud interne
-     * @param board L'état de la grille de jeu
+     * @param board La situation de jeu pour le noeud
      * @param depth La profondeur du noeud
-     * @param alpha Le seuil pour la coupe alpha
-     * @param beta Le seuil pour la coupe beta
+     * @param alphabeta Le seuil pour la coupe alpha-beta
      */
-    MinNodeDaisy(Board board, int depth, double alpha, double beta)
+    MaxNode (Board board, int depth, double alpha, double beta)
     {
         super (board, depth, alpha, beta);
     }
 
     /**
-     * Retourne le min
+     * Retourne le max
      * @param eval1 Un double
      * @param eval2 Un autre double
-     * @return Le min entre deux valeurs, selon le type de noeud
+     * @return Le max entre deux valeurs, selon le type de noeud
      */
     @Override
     protected double minmax (double eval1, double eval2)
     {
-        return Math.min (eval1, eval2);
+        return Math.max (eval1, eval2);
     }
 
     /**
      * Indique s'il faut faire une coupe alpha-beta
-     * (si l'évaluation courante du noeud est inférieure à l'évaluation courante du noeud parent)
+     * (si l'évaluation courante du noeud est supérieure à l'évaluation courante du noeud parent)
      * @param eval L'évaluation courante du noeud
      * @param alpha Le seuil pour la coupe alpha
      * @param beta Le seuil pour la coupe beta
@@ -52,21 +51,21 @@ public class MinNodeDaisy extends MinMaxNodeDaisy
     @Override
     protected boolean alphabeta (double eval, double alpha, double beta)
     {
-        return eval <= alpha;
+        return eval >= beta;
     }
 
     /**
-     * Retourne un noeud MaxNode du niveau suivant
+     * Retourne un noeud MinNode du niveau suivant
      * @param board L'état de la grille de jeu
      * @param depth La profondeur du noeud
      * @param alpha Le seuil pour la coupe alpha
      * @param beta Le seuil pour la coupe beta
-     * @return Un noeud MaxNode du niveau suivant
+     * @return Un noeud MinNode du niveau suivant
      */
     @Override
-    protected MinMaxNodeDaisy getNextNode (Board board, int depth, double alpha, double beta)
+    protected MinMaxNode getNextNode (Board board, int depth, double alpha, double beta)
     {
-        return new MaxNodeDaisy(board, depth, alpha, beta);
+        return new MinNode(board, depth, alpha, beta);
     }
 
     /**
@@ -78,7 +77,7 @@ public class MinNodeDaisy extends MinMaxNodeDaisy
     @Override
     protected double alpha (double evaluation, double alpha)
     {
-        return alpha;
+        return Math.max (evaluation, alpha);
     }
 
     /**
@@ -90,13 +89,13 @@ public class MinNodeDaisy extends MinMaxNodeDaisy
     @Override
     protected double beta (double evaluation, double beta)
     {
-        return Math.min (evaluation, beta);
+        return beta;
     }
 
-    /** Pire score : une grande valeur */
+    /** Pire score : une petite valeur */
     @Override
     protected double worst ()
     {
-        return Double.MAX_VALUE;
+        return -Double.MAX_VALUE;
     }
 }
