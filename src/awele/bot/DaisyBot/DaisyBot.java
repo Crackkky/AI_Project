@@ -9,10 +9,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-/**
- * @author Alexandre Blansché Bot qui selon le MinMax
- */
-public class MinMaxBot extends CompetitorBot {
+public class DaisyBot extends CompetitorBot {
 	/**
 	 * @throws InvalidBotException
 	 */
@@ -21,7 +18,7 @@ public class MinMaxBot extends CompetitorBot {
 
 	private int compteurCoups;
 
-	private static final int MAX_LEARN_TIME = 50 * 60 * 1000;
+	private static final int MAX_LEARN_TIME = 5;//0 * 60 * 1000;
 	private long start, end;
 
 	private static final int k = 10; // voisin
@@ -30,14 +27,15 @@ public class MinMaxBot extends CompetitorBot {
 	private Random random = new Random();
 
 	private int MAX_PARTIE = 30; // le nombre de partie jouer au max pour l'apprentissage
-	private int DETPH_LEARN = 11; // profondeur du minmax de l'apprentissage
+	private int DEPTH_LEARN = 11; // profondeur du minmax de l'apprentissage
 	private int MAX_VOISIN = 10;
 
 	private int DEPTH = 8;// profondeur du minmax
 
-	public MinMaxBot() throws InvalidBotException {
-		this.setBotName("Daisy aux grandes oreilles");
-		this.addAuthor("GARRIGUE Arnaud - ROUSSEL Julian");
+	public DaisyBot() throws InvalidBotException {
+		this.setBotName("Daisy");
+		this.addAuthor("Julian ROUSSEL");
+		this.addAuthor("Arnaud GARRIGUE");
 	}
 
 	/**
@@ -61,7 +59,6 @@ public class MinMaxBot extends CompetitorBot {
 		////////////////////////////////////////////
 		// initialisation variable
 		////////////////////////////////////////////
-
 		this.won = new MinMAxData(true);
 		// this.lost = new MinMAxData(false);
 		// data = AweleData.getInstance();
@@ -128,13 +125,12 @@ public class MinMaxBot extends CompetitorBot {
 		////////////////////////////////////////////
 		// boucle apprentissage contre minmax
 		////////////////////////////////////////////
-
 		for (Board copyLearn : listMinMax) {
+
 			////////////////////////////////////////////
 			// MinMax sur le board minmax
 			////////////////////////////////////////////
-
-			MinMaxNode.initialize(copyLearn, DETPH_LEARN);
+			MinMaxNode.initialize(copyLearn, DEPTH_LEARN);
 			decision = new MaxNode(copyLearn).getDecision();
 
 			////////////////////////////////////////////
@@ -152,7 +148,6 @@ public class MinMaxBot extends CompetitorBot {
 			////////////////////////////////////////////
 			// formatage et ajout dans la liste des coups forts
 			////////////////////////////////////////////
-
 			for (int j = 0; j < NB_HOLES; j++)
 				apprentissage[j] = copyLearn.getPlayerHoles()[j];
 			for (int j = 0; j < NB_HOLES; j++)
@@ -167,7 +162,6 @@ public class MinMaxBot extends CompetitorBot {
 		////////////////////////////////////////////
 		// boucle d'apprentissage
 		////////////////////////////////////////////
-
 		do {
 
 			////////////////////////////////////////////
@@ -190,8 +184,7 @@ public class MinMaxBot extends CompetitorBot {
 				////////////////////////////////////////////
 				// MinMax sur le board aléatoire
 				////////////////////////////////////////////
-
-				MinMaxNode.initialize(copy, DETPH_LEARN);
+				MinMaxNode.initialize(copy, DEPTH_LEARN);
 				decision = new MaxNode(copy).getDecision();
 
 				////////////////////////////////////////////
@@ -209,7 +202,6 @@ public class MinMaxBot extends CompetitorBot {
 				////////////////////////////////////////////
 				// formatage et ajout dans la liste des coups forts
 				////////////////////////////////////////////
-
 				for (int j = 0; j < 6; j++)
 					apprentissage[j] = copy.getPlayerHoles()[j];
 				for (int j = 0; j < 6; j++)
